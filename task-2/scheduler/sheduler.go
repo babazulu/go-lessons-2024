@@ -12,15 +12,12 @@ type Scheduler struct {
 }
 
 func NewScheduler() *Scheduler {
-	s := &Scheduler{}
-	s.Init()
+	s := &Scheduler{
+		currentJobId: 0,
+		jobsCancel:   make(map[int]chan bool),
+		m:            new(sync.Mutex),
+	}
 	return s
-}
-
-func (s *Scheduler) Init() {
-	s.currentJobId = 0
-	s.jobsCancel = make(map[int]chan bool)
-	s.m = new(sync.Mutex)
 }
 
 func (s *Scheduler) SetTimeout(job Job, delay time.Duration) int {
