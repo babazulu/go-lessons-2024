@@ -22,12 +22,10 @@ func NewScheduler() *Scheduler {
 
 func (s *Scheduler) SetTimeout(job Job, delay time.Duration) int {
 	s.m.Lock()
-	defer s.m.Unlock()
-
 	id := s.currentJobId
 	s.currentJobId++
-
 	s.jobsCancel[id] = make(chan bool)
+	s.m.Unlock()
 
 	go func(job Job, delay time.Duration, cancelCh chan bool) {
 		timer := time.NewTimer(delay)
