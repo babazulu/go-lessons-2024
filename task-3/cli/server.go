@@ -17,7 +17,6 @@ func init() {
 }
 
 type Db struct {
-	batch.ExternalDB
 }
 
 func (d *Db) SaveBatch(data []string, size int) {

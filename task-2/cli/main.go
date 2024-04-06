@@ -7,7 +7,6 @@ import (
 )
 
 type OneJob struct {
-	scheduler.Job
 }
 
 func (j *OneJob) Do() {
