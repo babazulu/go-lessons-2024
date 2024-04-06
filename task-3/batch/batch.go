@@ -78,7 +78,6 @@ func (b *Service) flush(elems []reqData, count int) {
 }
 
 func (b *Service) loop() {
-
 	arr := make([]reqData, b.size)
 	elem := 0
 
