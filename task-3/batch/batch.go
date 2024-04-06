@@ -95,6 +95,7 @@ func (b *Service) loop() {
 				copy(tmp, arr)
 				b.flush(tmp, elem+1)
 				elem = 0
+				b.ticker.Reset(b.timeout)
 			} else {
 				elem++
 			}
